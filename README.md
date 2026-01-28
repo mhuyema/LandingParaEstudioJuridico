@@ -1,6 +1,6 @@
 # ⚖️ Estudio Jurídico Coiman & Asociados - Web Institucional
 
-![.NET Core](https://img.shields.io/badge/.NET%20Core-8.0-purple) ![Status](https://img.shields.io/badge/Status-Production-success) ![License](https://img.shields.io/badge/License-MIT-blue)
+![.NET Core](https://img.shields.io/badge/.NET%20Core-10.0-purple) ![Status](https://img.shields.io/badge/Status-Production-success) ![License](https://img.shields.io/badge/License-MIT-blue)
 
 > **Solución web a medida** desarrollada para una firma legal, enfocada en la conversión de clientes y la identidad institucional.
 
