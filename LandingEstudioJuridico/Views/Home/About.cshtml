@@ -1,0 +1,542 @@
+﻿@model LandingEstudioJuridico.Controllers.ContactController.ContactViewModel;
+
+@{
+    ViewData["Title"] = "About";
+}
+    <style>
+        :root {
+            --bs-primary: #001F3F;
+            --bs-primary-rgb: 0, 31, 63;
+            --accent-color: #C5A059;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+
+        main {
+            flex: 1;
+        }
+
+        .navbar {
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--bs-primary) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: #444 !important;
+            padding: 0.5rem 1rem !important;
+        }
+
+            .nav-link:hover {
+                color: var(--bs-primary) !important;
+            }
+
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+            .btn-primary:hover {
+                background-color: #002d5c;
+                border-color: #002d5c;
+            }
+
+        .hero-section {
+            background-color: var(--bs-primary);
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .carousel-item {
+            height: 700px;
+            min-height: 400px;
+            background: no-repeat center center scroll;
+            background-size: cover;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,31,63,0.9) 0%, rgba(0,31,63,0.4) 100%);
+        }
+
+        .carousel-caption {
+            bottom: auto;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: left;
+            max-width: 700px;
+            left: 10%;
+            padding-bottom: 0;
+        }
+
+            .carousel-caption h1 {
+                font-weight: 800;
+                font-size: 3.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .carousel-caption p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+                opacity: 0.9;
+            }
+
+        .stats-cards {
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2.5rem;
+            border: none;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            border-radius: 8px;
+        }
+
+            .stat-card.featured {
+                background: var(--bs-primary);
+                color: white;
+            }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-weight: 800;
+            color: var(--bs-primary);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 4px;
+                background-color: var(--accent-color);
+            }
+
+        .practice-area-card {
+            border: 1px solid #eee;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+            .practice-area-card:hover {
+                border-color: var(--bs-primary);
+                background-color: var(--bs-primary);
+                color: white;
+                transform: translateY(-10px);
+            }
+
+            .practice-area-card .material-symbols-outlined {
+                font-size: 3rem;
+                color: var(--accent-color);
+                margin-bottom: 1.5rem;
+            }
+
+            .practice-area-card:hover .material-symbols-outlined {
+                color: white;
+            }
+
+            .practice-area-card h3 {
+                font-size: 1.25rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+
+            .practice-area-card p {
+                font-size: 0.9rem;
+                opacity: 0.8;
+                margin-bottom: 1.5rem;
+            }
+
+        .btn-link-custom {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .practice-area-card:hover .btn-link-custom {
+            color: white;
+        }
+
+        .report-section {
+            background-color: #f8f9fa;
+        }
+
+        .report-image {
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background-color: var(--bs-primary);
+            color: rgba(255,255,255,0.7);
+            padding: 80px 0 30px;
+        }
+
+            footer h4 {
+                color: white;
+                font-weight: 700;
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            footer .nav-link {
+                color: rgba(255,255,255,0.7) !important;
+                padding: 0.3rem 0 !important;
+                text-transform: none;
+                font-size: 0.9rem;
+            }
+
+                footer .nav-link:hover {
+                    color: var(--accent-color) !important;
+                }
+
+        .footer-logo {
+            color: white;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            padding-top: 30px;
+            font-size: 0.8rem;
+        }
+
+        .material-symbols-outlined {
+            vertical-align: middle;
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999; /* Asegura que esté por encima de todo */
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+            .whatsapp-btn:hover {
+                transform: scale(1.1); /* Efecto de "agrandarse" al pasar el mouse */
+                box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+                background-color: #20BA56;
+            }
+
+        .whatsapp-icon {
+            width: 60px;
+            height: 60px;
+            fill: white;
+        }
+
+
+
+        .whatsapp-btn {
+            animation: pulse-green 2s infinite;
+
+            .video-container {
+                position: relative;
+            }
+
+            .video-overlay {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2;
+                background: rgba(0, 0, 0, 0.4); /* opcional, pero profesional */
+            }
+        
+
+    </style>
+
+<body class="bg-light">
+    <main>
+        <section class="position-relative">
+            <div class="ratio ratio-16x9">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoyChN-VmymOBpeAAhudS_amOBjynmLHdbMUzUiEyp5SJruNonahOaLBmh4yof6ujji27D7hKjsY8z6sEq42STJuTpsE4JRAEfdBKG1xmiKT6G_m-2-iSREf5ulyi_jfoXOcHgK_O2BONHWMtlSP5rNTuhSdAdOuvPvsh2RG2ajcc_TLUF5XGU5QpUE3HbCrQeZN0JGk5RyzYOKkV03pg9tqXY7qdarteKg9XhLEiPifY0d5peRwGt7zqPzH2ht40SG4Y7Asy-9eU"
+                     class="w-100 h-100 object-fit-cover"
+                     alt="Hero" />
+            </div>
+
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50">
+                <div class="text-center text-white">
+                    <p class="text-uppercase small mb-2" style="letter-spacing:0.3em">Institucional</p>
+                    <h1 class="display-3 fw-bold">Sobre Nosotros</h1>
+                </div>
+            </div>
+        </section>
+        <section class="py-5 bg-white">
+            <div class="container py-lg-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 text-center">
+                        <h2 class="display-5 font-display text-navy mb-4">Trayectoria y Compromiso Profesional</h2>
+                        <div class="line-decorative mx-auto"></div>
+                        <p class="lead text-muted mb-5 mx-auto" style="max-width: 800px;">
+                            Con más de 10 años de experiencia en el ejercicio de la abogacía, Elisabeth Coiman desarrolla su práctica con un enfoque claro: brindar asesoramiento jurídico serio, estratégico y cercano. Su trayectoria se construye a partir del trabajo constante, la formación continua y el compromiso personal con cada caso.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <div class="position-relative">
+                            <img alt="Nuestro equipo" class="img-fluid rounded shadow-lg"
+                            src="~/css/img/gemini_generated_image_83peso83peso83pe.png" style="min-height: 450px; object-fit: cover; width: 100%;" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6" id="Equipo">
+                        <div class="ps-lg-4">
+                            <h2 class="font-display text-navy fw-bold mb-3 fs-1">Equipo Profesional</h2>
+                            <div class="line-decorative"></div>
+                            <p class="mb-4 text-secondary">
+                                Egresada de la Universidad Nacional de Lomas de Zamora y oriunda de Quilmes, Elisabeth combina el conocimiento académico con una mirada práctica del derecho, orientada a resolver conflictos reales en contextos concretos. 
+                            </p>
+                            <p class="mb-5 text-secondary">
+                                Su experiencia abarca el acompañamiento integral a personas y organizaciones, priorizando siempre la claridad, la responsabilidad profesional y la ética.
+                            </p>
+                            <div class="row border-top pt-4 text-center">
+                                <div class="col-4">
+                                    <span class="material-symbols-outlined text-accent fs-1 mb-2">workspace_premium</span>
+                                    <p class="small fw-bold text-uppercase text-navy" style="letter-spacing: 0.1em;">Excelencia</p>
+                                </div>
+                                <div class="col-4">
+                                    <span class="material-symbols-outlined text-accent fs-1 mb-2">verified_user</span>
+                                    <p class="small fw-bold text-uppercase text-navy" style="letter-spacing: 0.1em;">Integridad</p>
+                                </div>
+                                <div class="col-4">
+                                    <span class="material-symbols-outlined text-accent fs-1 mb-2">handshake</span>
+                                    <p class="small fw-bold text-uppercase text-navy" style="letter-spacing: 0.1em;">Compromiso</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-navy py-5 mt-5">
+            <div class="container">
+                <div class="row text-center text-white g-4">
+                    <div class="col-md-4">
+                        <h3 class="display-4 font-display text-black-50 fw-bold">10+</h3>
+                        <p class="text-uppercase small  text-black-50 tracking-widest">Años de Historia</p>
+                    </div>
+                    <div class="col-md-4 border-start border-white border-opacity-10 border-end">
+                        <h3 class="display-4 font-display text-black-50 fw-bold">5+</h3>
+                        <p class="text-uppercase small text-black-50 tracking-widest">Áreas de Especialización</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="display-4 font-display text-black-50 fw-bold">200+</h3>
+                        <p class="text-uppercase small  text-black-50 tracking-widest">Casos de Exito</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5" id="contacto">
+            <div class="container py-4">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+
+                        <div class="text-center mb-5">
+                            <h2 class="fw-bold text-dark">¿Necesita asesoramiento legal?</h2>
+                            <p class="text-muted">Déjenos su consulta y uno de nuestros especialistas lo contactará a la brevedad.</p>
+                        </div>
+
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-4 p-md-5">
+                                @if (TempData["MensajeExito"] != null)
+                                {
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <i class="bi bi-check-circle-fill me-2"></i> @TempData["MensajeExito"]
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                }
+
+                                @if (TempData["Error"] != null)
+                                {
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <i class="bi bi-exclamation-triangle-fill me-2"></i> @TempData["Error"]
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                }
+
+                                <form method="post" id="Contact" asp-controller="Contact" asp-action="Enviar">
+                                    <div class="row g-3">
+
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input asp-for="Nombre" type="text" class="form-control" placeholder="Su nombre" required>
+                                                <label for="nombre">Nombre completo</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input asp-for="Email" class="form-control" placeholder="nombre@ejemplo.com" required>
+                                                <label for="email">Tu correo electrónico</label>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <textarea asp-for="Mensaje" class="form-control" placeholder="Escriba su mensaje aquí" id="consulta" style="height: 150px" required></textarea>
+                                                <label for="consulta">Detalle de su consulta</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 mt-4">
+                                            <button class="btn btn-primary btn-lg w-100 py-3 fw-bold shadow-sm" type="submit">
+                                                Enviar Consulta
+                                                <span class="material-symbols-outlined align-middle ms-2" style="font-size: 1.2rem;">send</span>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <p class="text-center text-muted small mt-4">
+                            <span class="material-symbols-outlined align-middle me-1" style="font-size: 1rem;">lock</span>
+                            Su información es confidencial y está protegida por el secreto profesional.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="text-light py-5 mt-auto rounded-4 shadow">
+        <div class="container">
+            <div class="row g-4 justify-content-between">
+
+                <div class="col-lg-4">
+                    <h5 class="text-uppercase mb-3 fw-bold text-white">Estudio Coiman</h5>
+                    <p class="small text-white-50 pe-lg-5">Firma líder en servicios legales  en Argentina, con una trayectoria  de excelencia y compromiso.</p>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <h5 class="mb-3 text-white">Secciones</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a class="text-decoration-none text-white-50 hover-white" asp-action="About" asp-fragment="Equipo">Profesionales</a></li>
+                        <li class="mb-2"><a class="text-decoration-none text-white-50 hover-white" asp-action="Index"asp-fragment="Practica" >Áreas de Práctica</a></li>
+                        <li class="mb-2"><a class="text-decoration-none text-white-50 hover-white" asp-action="About">Nosotros</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <h5 class="mb-3 text-white">Estamos en</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><span class="text-white-50">Buenos Aires, AR</span></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4">
+                    <h5 class="mb-3 text-white">Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li class="d-flex align-items-start">
+                            <span class="material-symbols-outlined me-2 small text-warning mt-1">location_on</span>
+                            <span class="small text-white-50">Calle 148 nro 945 Bgui.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-top border-secondary pt-4 mt-4">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="text-white">© 2026 Estudio Coiman. Todos los derechos reservados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/5491167675329?text=Hola,%20me%20contacto%20desde%20la%20web,%20quisiera%20hacer%20una%20consulta."
+       class="whatsapp-btn"
+       target="_blank"
+       title="Chatear por WhatsApp">
+
+        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-4-10.5-6.8z" />
+        </svg>
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
