@@ -24,7 +24,7 @@ El objetivo principal fue digitalizar el canal de entrada de clientes del estudi
 ## 🛠️ Tech Stack & Herramientas
 
 ### Backend
-* **Framework:** ASP.NET Core 8 (MVC Pattern).
+* **Framework:** ASP.NET Core 10 (MVC Pattern).
 * **Lenguaje:** C#.
 * **Email Services:** MailKit / MimeKit (Implementación SMTP asíncrona).
 * **Hosting:** IIS (Windows Server) en Somee.
